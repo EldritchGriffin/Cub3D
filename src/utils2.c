@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:20:52 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 01:21:28 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/08 17:14:45 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,46 +50,17 @@ void	p_rotate(t_data *data)
 	data->ply->pa = limit_angles(data->ply->pa);
 }
 
-void	render_wall2d(int x, int y, t_data *data)
+int get_texel(t_data *data, int x, int y, int slice)
 {
-	int	i;
-	int	j;
-	int	n_unit;
-	int	ox;
+	int		text_x;
+	int		text_y;
+	double	wall_pos;
+	unsigned int color;
 
-	i = 0;
-	n_unit = (UNIT)-1;
-	ox = x;
-	while (i <= n_unit)
-	{
-		ox = x;
-		j = 0;
-		while (j <= n_unit)
-		{
-			pixel_put_img(data->wrld, ox / 4, y / 4, 0xfc6f03);
-			j++;
-			ox++;
-		}
-		y++;
-		i++;
-	}
+	wall_pos = y / (double)slice;
+	text_y = (int)(wall_pos * UNIT);
+	text_x = (int)(x / (double)UNIT * UNIT);
+	mlx_get_color_at(data->img, text_x, text_y, &color);
+	return (color);
 }
 
-void	render_level2d(t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->lvl->only_map[i])
-	{
-		j = 0;
-		while (data->lvl->only_map[i][j])
-		{
-			if (data->lvl->only_map[i][j] == '1')
-				render_wall2d(j * UNIT, i * UNIT, data);
-			j++;
-		}
-		i++;
-	}
-}

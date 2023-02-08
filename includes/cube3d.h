@@ -6,7 +6,7 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:59 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/08 15:40:32 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:01:39 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
 # define WE 3
 # define EA 4
 # define UNIT 64
-# define P_W 320
+# define P_W 200
 # define P_H 200
 # define PI 3.14159265358979323846
 # define MVS 10
 # define TRS 2
-# define SSCL 3
+# define SSCL 4
 # define MSCL 8
 
 typedef struct s_mlx
@@ -77,7 +77,6 @@ typedef struct s_ray
 	float		dist;
 	t_pos		wall_pos;
 	int			is_v;
-	char		intersected;
 }				t_ray;
 
 typedef struct s_textures
@@ -103,6 +102,7 @@ typedef struct s_data
 	t_textures	*east;
 	t_textures	*west;
 	t_map		*lvl;
+	void		*img;
 
 }				t_data;
 
@@ -114,7 +114,7 @@ t_data			*get_data(t_map *map);
 void			free_tab(char **tab);
 
 //--------------level drawing functions----------------
-
+int get_texel(t_data *data, int x, int y, int slice);
 //--------------math funcs-------------------
 
 float			limit_angles(float ra);
@@ -130,6 +130,7 @@ float			cast_ray(t_data *data, int i);
 
 void			pixel_put_img(t_img *img, int x, int y, unsigned int color);
 int				create_rgb(int r, int g, int b);
+void			mlx_get_color_at(void *img, int x, int y, unsigned int *color);
 
 //-------------norm function-------------------
 void			is_collided(float x, float y, t_data *data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_adds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:47:49 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/08 01:12:55 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/08 16:35:43 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,15 @@ void	pixel_put_img(t_img *img, int x, int y, unsigned int color)
 int	create_rgb(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
+}
+
+void	mlx_get_color_at(void *img, int x, int y, unsigned int *color)
+{
+	char	*data_ptr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+
+	data_ptr = (char *)mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
+	*color = *(unsigned int *)(data_ptr + (y * size_line) + (x * (bits_per_pixel / 8)));
 }

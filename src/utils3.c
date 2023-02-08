@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:21:55 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 01:22:26 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/08 17:19:13 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 void	render_slice(t_data *data, int slice, int x)
 {
 	int	y;
+	unsigned int color;
 
+	color = 0;
 	if (slice > data->mlx->w_h)
 		slice = data->mlx->w_h;
 	y = (data->mlx->w_h / 2) - (slice / 2);
 	while (y <= (data->mlx->w_h / 2) + (slice / 2))
 	{
-		pixel_put_img(data->wrld, x, y, 0x000000);
+		color = get_texel(data, x, y, slice);
+		pixel_put_img(data->wrld, x, y, color);
 		y++;
 	}
 }
