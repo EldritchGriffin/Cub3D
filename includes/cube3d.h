@@ -6,7 +6,7 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:59 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/08 17:01:39 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:47:48 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define WE 3
 # define EA 4
 # define UNIT 64
-# define P_W 200
+# define P_W 320
 # define P_H 200
 # define PI 3.14159265358979323846
 # define MVS 10
@@ -55,16 +55,16 @@ typedef struct s_img
 
 typedef struct s_pos
 {
-	float		x;
-	float		y;
+	double		x;
+	double		y;
 }				t_pos;
 
 typedef struct s_ply
 {
 	t_pos		*p_pos;
-	float		fov;
-	float		p_alt;
-	float		pa;
+	double		fov;
+	double		p_alt;
+	double		pa;
 	int			mv_dir;
 	int			mh_dir;
 	int			r_dir;
@@ -74,7 +74,8 @@ typedef struct s_ply
 
 typedef struct s_ray
 {
-	float		dist;
+	double		ra;
+	double		dist;
 	t_pos		wall_pos;
 	int			is_v;
 }				t_ray;
@@ -93,8 +94,8 @@ typedef struct s_data
 {
 	t_ply		*ply;
 	t_mlx		*mlx;
-	float		abr;
-	float		dsp;
+	double		abr;
+	double		dsp;
 	t_ray		*rays;
 	t_img		*wrld;
 	t_textures	*north;
@@ -114,17 +115,17 @@ t_data			*get_data(t_map *map);
 void			free_tab(char **tab);
 
 //--------------level drawing functions----------------
-int get_texel(t_data *data, int x, int y, int slice);
+int 			get_texel(t_data *data, int x, int y, int slice, int is_v);
 //--------------math funcs-------------------
 
-float			limit_angles(float ra);
-float			rad_to_deg(float x);
-float			deg_to_rad(float x);
-float			normalize_ray(float rl, float ra, t_data *data);
+double			limit_angles(double ra);
+double			rad_to_deg(double x);
+double			deg_to_rad(double x);
+double			normalize_ray(double rl, double ra, t_data *data);
 
 //--------------raycasting funcs------------------------
 
-float			cast_ray(t_data *data, int i);
+double			cast_ray(t_data *data, int i);
 
 //-------------mlx_mods---------------------------------
 
@@ -133,7 +134,7 @@ int				create_rgb(int r, int g, int b);
 void			mlx_get_color_at(void *img, int x, int y, unsigned int *color);
 
 //-------------norm function-------------------
-void			is_collided(float x, float y, t_data *data);
+void			is_collided(double x, double y, t_data *data);
 void			render_floor(t_data *data, int color, t_img *img);
 void			render_sky(t_data *data, int color, t_img *img);
 void			loop_rays(t_data *data);

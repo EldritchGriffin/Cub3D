@@ -6,7 +6,7 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:18:18 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 16:11:31 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:06:36 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	render_floor(t_data *data, int color, t_img *img)
 	}
 }
 
-void	is_collided(float x, float y, t_data *data)
+void	is_collided(double x, double y, t_data *data)
 {
 	int	map_x;
 	int	map_y;

@@ -6,7 +6,7 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:21:55 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 17:19:13 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 00:15:16 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ void	render_slice(t_data *data, int slice, int x)
 	unsigned int color;
 
 	color = 0;
-	if (slice > data->mlx->w_h)
-		slice = data->mlx->w_h;
 	y = (data->mlx->w_h / 2) - (slice / 2);
+	if(y < 0)
+		y = 0;
 	while (y <= (data->mlx->w_h / 2) + (slice / 2))
 	{
-		color = get_texel(data, x, y, slice);
+		color = get_texel(data, x, y, slice, data->rays[x].is_v);
 		pixel_put_img(data->wrld, x, y, color);
+		if (y > data->mlx->w_h)
+			break;
 		y++;
 	}
 }
@@ -37,7 +39,7 @@ void	render_walls3d(t_data *data)
 	i = 0;
 	while (i <= data->mlx->w_w - 1)
 	{
-		slice = UNIT / data->rays[i].dist * data->dsp;
+		slice = ((double)UNIT / data->rays[i].dist) * data->dsp;
 		render_slice(data, slice, i);
 		i++;
 	}

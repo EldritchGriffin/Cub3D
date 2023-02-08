@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   additional.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 00:42:51 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/08 01:13:52 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/08 19:06:36 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-float	limit_angles(float ra)
+double	limit_angles(double ra)
 {
 	if (ra > 360)
 		ra = ra - 360;

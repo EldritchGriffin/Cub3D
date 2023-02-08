@@ -6,13 +6,13 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 22:21:10 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/04 15:29:46 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:49:31 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-int get_dir_v(float   ra)
+int get_dir_v(double   ra)
 {
     int res;
 
@@ -26,7 +26,7 @@ int get_dir_v(float   ra)
     return (res);
 }
 
-int get_dir_h(float ra)
+int get_dir_h(double ra)
 {
     int res;
     
@@ -40,7 +40,7 @@ int get_dir_h(float ra)
     return (res);
 }
 
-float   get_hwy(t_data  *data, int dir)
+double   get_hwy(t_data  *data, int dir)
 {
     int wy;
     
@@ -55,9 +55,9 @@ float   get_hwy(t_data  *data, int dir)
     return (wy);
 }
 
-float   get_vwx(t_data  *data, int dir)
+double   get_vwx(t_data  *data, int dir)
 {
-    float wx;
+    double wx;
     
     if(dir == -1)
     {
@@ -70,7 +70,7 @@ float   get_vwx(t_data  *data, int dir)
     return (wx);
 }
 
-t_pos   check_wall_h(double  *res, float ra, t_data   *data)
+t_pos   check_wall_h(double  *res, double ra, t_data   *data)
 {
     double   xa;
     double   ya;
@@ -102,7 +102,7 @@ t_pos   check_wall_h(double  *res, float ra, t_data   *data)
     return (wpos);
 }
 
-t_pos   check_wall_v(double  *res, float ra, t_data   *data)
+t_pos   check_wall_v(double  *res, double ra, t_data   *data)
 {
     double xa;
     double ya;
@@ -134,16 +134,17 @@ t_pos   check_wall_v(double  *res, float ra, t_data   *data)
     return (wpos);
 }
 
-float    cast_ray(t_data    *data, int  i)
+double    cast_ray(t_data    *data, int  i)
 {
     double   h;
     double   v;
-    float   ra;
+    double   ra;
     t_pos   wposv;
     t_pos   wposh;
 
-    ra = (data->ply->pa + 30.0) - ((float)(i) * data->abr);
+    ra = (data->ply->pa + 30.0) - ((double)(i) * data->abr);
     ra = limit_angles(ra);
+    data->rays[i].ra = ra;
     h = INFINITY;
     v = INFINITY;
     wposv = check_wall_v(&v, ra, data);
