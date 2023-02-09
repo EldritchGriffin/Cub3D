@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_rgb.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:44:09 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 01:42:56 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 01:52:00 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_check_rgb_error_f(char *line, t_map 	*t)
 	int		i;
 
 	i = 0;
+	printf("%s\n", line);
 	if (ft_check_number_of_comma(line) == 2 && ft_check_line_rgb(line) == 0)
 	{
 		line = ft_strcpy(line, line);
@@ -62,6 +63,8 @@ int	ft_check_rgb_error_c(char *line, t_map	*map)
 	int		i;
 
 	i = 0;
+	printf("%s\n", line);
+
 	if (ft_check_number_of_comma(line) == 2 && ft_check_line_rgb(line) == 0)
 	{
 		line = ft_strcpy(line, line);
@@ -71,6 +74,9 @@ int	ft_check_rgb_error_c(char *line, t_map	*map)
 			map->r_c = ft_atoi(rgb[0]);
 			map->g_c = ft_atoi(rgb[1]);
 			map->b_c = ft_atoi(rgb[2]);
+			printf("%d\n", map->r_c);
+			printf("%d\n", map->g_c);
+			printf("%d\n", map->b_c);
 		}
 		else
 		{
@@ -88,7 +94,6 @@ int	ft_check_rgb_error_c(char *line, t_map	*map)
 void	ft_check_color2(char *line, t_map	*map)
 {
 	char	*file;
-
 	file = ft_strdup(line);
 	if (ft_check_rgb_error_c(file, map) == 1)
 	{

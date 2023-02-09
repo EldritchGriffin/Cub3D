@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:59 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 01:56:17 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 01:58:35 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define SO 2
 # define WE 3
 # define EA 4
-# define UNIT 64
+# define UNIT 32
 # define P_W 320
 # define P_H 200
 # define PI 3.14159265358979323846

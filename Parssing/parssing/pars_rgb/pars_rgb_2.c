@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:23:44 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 00:44:45 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 01:59:09 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_check_number_of_comma(char *str)
 
 void copy_texture(char *type, char *path, t_texture *t)
 {
+	
 	if (type[0] == 'W')
 	{	
 		if (t->we == NULL)

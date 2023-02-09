@@ -6,7 +6,7 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:20:52 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 00:05:53 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 01:31:08 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,24 @@ void	p_rotate(t_data *data)
 	data->ply->pa = limit_angles(data->ply->pa);
 }
 
-int get_texel(t_data *data, int x, int y, int slice, int is_v)
+int	get_texel(t_data *data, int x, int y, int slice)
 {
-	int		text_x;
-	int		text_y;
-	unsigned int color;
+	int				text_x;
+	int				text_y;
+	unsigned int	color;
 
 	text_x = (int)data->rays[x].wall_pos.x % UNIT;
-	if (is_v)
+	if (data->rays[x].is_v)
 	{
 		text_x = (int)data->rays[x].wall_pos.y % UNIT;
-		text_y = ((y -  ((data->mlx->w_h / 2) - (slice / 2))) * ((double)(double)UNIT / (double)slice));
+		text_y = ((y - ((data->mlx->w_h / 2) - (slice / 2)))
+				* ((double)(double)UNIT / (double)slice));
 	}
 	else
 	{
-		text_y = ((y -  ((data->mlx->w_h / 2) - (slice / 2))) * ((double)(double)UNIT / (double)slice));
+		text_y = ((y - ((data->mlx->w_h / 2) - (slice / 2)))
+				* ((double)(double)UNIT / (double)slice));
 	}
-
 	mlx_get_color_at(data->img, text_x, text_y, &color);
 	return (color);
 }
-
-
-
-
-

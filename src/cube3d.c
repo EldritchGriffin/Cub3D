@@ -6,45 +6,47 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:56 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 00:25:56 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:06:18 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-int	update(t_data	*data)
+int	update(t_data *data)
 {
 	p_move(data);
 	p_rotate(data);
 	mlx_clear_window(data->mlx->mp, data->mlx->w3);
 	mlx_destroy_image(data->mlx->mp, data->wrld->img);
-	data->wrld->img = mlx_new_image(data->mlx->mp,data->mlx->w_w, data->mlx->w_h);
+	data->wrld->img = mlx_new_image(data->mlx->mp, data->mlx->w_w,
+			data->mlx->w_h);
 	render_sky(data, 0x66b3d1, data->wrld);
 	render_floor(data, 0x3d874a, data->wrld);
 	loop_rays(data);
 	render_walls3d(data);
-	mlx_put_image_to_window(data->mlx->mp, data->mlx->w3, data->wrld->img, 0, 0);
-	mlx_put_image_to_window(data->mlx->mp, data->mlx->w3, data->img, 0,0);
+	mlx_put_image_to_window(data->mlx->mp, data->mlx->w3, data->wrld->img, 0,
+		0);
+	mlx_put_image_to_window(data->mlx->mp, data->mlx->w3, data->img, 0, 0);
 	return (0);
 }
 
-int ft_find_player(char	c)
+int	ft_find_player(char c)
 {
-	if(c == 'N')
+	if (c == 'N')
 		return (90);
-	if(c == 'S')
+	if (c == 'S')
 		return (270);
-	if(c == 'E')
+	if (c == 'E')
 		return (0);
-	if(c == 'W')
+	if (c == 'W')
 		return (180);
 	return (1);
 }
 
-void ft_return_map_square(t_map *map)
+void	ft_return_map_square(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	map->p_orient = 1;
@@ -53,7 +55,7 @@ void ft_return_map_square(t_map *map)
 		j = 0;
 		while (map->only_map[i][j])
 		{
-			if(map->p_orient == 1)
+			if (map->p_orient == 1)
 				map->p_orient = ft_find_player(map->only_map[i][j]);
 			if (map->only_map[i][j] == ' ')
 				map->only_map[i][j] = '1';
@@ -63,7 +65,7 @@ void ft_return_map_square(t_map *map)
 	}
 }
 
-int	keydown(int keycode, t_data	*data)
+int	keydown(int keycode, t_data *data)
 {
 	get_m_dir(keycode, data);
 	get_r_dir(keycode, data);
@@ -72,13 +74,13 @@ int	keydown(int keycode, t_data	*data)
 	return (keycode);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_data	*data;
+	t_data		*data;
 	t_map		map;
 	t_texture	t;
 
-//*********
+	//*********
 	t.ea = NULL;
 	t.no = NULL;
 	t.so = NULL;
@@ -117,15 +119,18 @@ int main(int ac, char **av)
 	data = get_data(&map);
 	if (!data)
 		return (0);
-/*******/
-	data->lvl->cl_c = create_rgb(data->lvl->r_c, data->lvl->g_c, data->lvl->b_c);
-	data->lvl->fl_c = create_rgb(data->lvl->r_f, data->lvl->g_f, data->lvl->b_f);
+	/*******/
+	data->lvl->cl_c = create_rgb(data->lvl->r_c, data->lvl->g_c,
+			data->lvl->b_c);
+	data->lvl->fl_c = create_rgb(data->lvl->r_f, data->lvl->g_f,
+			data->lvl->b_f);
 	int a;
-	data->img = mlx_xpm_file_to_image(data->mlx->mp, "/Users/skasmi/Cub3D/xpm_files/TECH_3A_1.xpm", &a, &a);
+	data->img = mlx_xpm_file_to_image(data->mlx->mp,
+			"/Users/skasmi/Cub3D/xpm_files/test.xpm", &a, &a);
 	mlx_hook(data->mlx->w3, 2, 0, keydown, data);
 	mlx_hook(data->mlx->w3, 3, 0, keyup, data);
-	mlx_hook(data->mlx->w3, 17,0, ft_quit, data);
+	mlx_hook(data->mlx->w3, 17, 0, ft_quit, data);
 	mlx_loop_hook(data->mlx->mp, update, data);
 	mlx_loop(data->mlx->mp);
-	return(0);
+	return (0);
 }

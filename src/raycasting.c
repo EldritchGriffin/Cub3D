@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 22:21:10 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 01:55:27 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:03:39 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ t_pos	check_wall_h(double *res, double ra, t_data *data)
 
 double	cast_ray(t_data *data, int i)
 {
-	double h;
-	double v;
-	double ra;
-	t_pos wposv;
-	t_pos wposh;
+	double	h;
+	double	v;
+	double	ra;
+	t_pos	wposv;
+	t_pos	wposh;
 
 	ra = (data->ply->pa + 30.0) - ((double)(i)*data->abr);
 	ra = limit_angles(ra);

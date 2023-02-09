@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 01:36:01 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 01:45:52 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:04:05 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ double	get_vwx(t_data *data, int dir)
 	return (wx);
 }
 
-int check_bounds(t_data *data, t_pos *wpos, double xa, double ya)
+int	check_bounds(t_data *data, t_pos *wpos, double xa, double ya)
 {
-    if ((int)(wpos->y / UNIT) >= data->lvl->height_only_map || (int)(wpos->y
-        / UNIT) <= 0)
-        return (1);
+	if ((int)(wpos->y / UNIT) >= data->lvl->height_only_map || (int)(wpos->y
+			/ UNIT) <= 0)
+		return (1);
 	while (data->lvl->only_map[(int)floor(wpos->y / UNIT)][(int)floor(wpos->x
 			/ UNIT)] != '1')
 	{
@@ -55,7 +55,7 @@ int check_bounds(t_data *data, t_pos *wpos, double xa, double ya)
 				/ UNIT) <= 0)
 			return (1);
 	}
-    return (0);
+	return (0);
 }
 
 t_pos	check_wall_v(double *res, double ra, t_data *data)
@@ -78,8 +78,8 @@ t_pos	check_wall_v(double *res, double ra, t_data *data)
 			* tanf(deg_to_rad(ra)));
 	if (dir == -1)
 		wpos.x -= 1;
-    if(check_bounds(data, &wpos, xa, ya))
-        return (*res = INFINITY, wpos);
+	if (check_bounds(data, &wpos, xa, ya))
+		return (*res = INFINITY, wpos);
 	*res = sqrtf(powf((data->ply->p_pos->x - wpos.x), 2)
 			+ powf((data->ply->p_pos->y - wpos.y), 2));
 	return (wpos);
