@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:59 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 02:37:53 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 03:08:15 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,8 @@ void			mlx_get_color_at(void *img, int x, int y, unsigned int *color);
 
 //-------------norm function-------------------
 void			is_collided(double x, double y, t_data *data);
-void			render_floor(t_data *data, int color, t_img *img);
-void			render_sky(t_data *data, int color, t_img *img);
+void			render_floor(t_data *data, t_img *img);
+void			render_sky(t_data *data, t_img *img);
 void			loop_rays(t_data *data);
 int				ft_quit(t_data *data);
 void			diag_move(t_data *data);

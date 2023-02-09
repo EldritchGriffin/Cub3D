@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:56 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 03:04:57 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 03:07:47 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	update(t_data *data)
 	mlx_destroy_image(data->mlx->mp, data->wrld->img);
 	data->wrld->img = mlx_new_image(data->mlx->mp, data->mlx->w_w,
 			data->mlx->w_h);
-	render_sky(data, 0x66b3d1, data->wrld);
-	render_floor(data, 0x3d874a, data->wrld);
+	render_sky(data, data->wrld);
+	render_floor(data, data->wrld);
 	loop_rays(data);
 	render_walls3d(data);
 	mlx_put_image_to_window(data->mlx->mp, data->mlx->w3, data->wrld->img, 0,
@@ -86,12 +86,6 @@ void	ft_parse(char	**av, t_map	*map)
 		exit(EXIT_FAILURE);
 	}
 	ft_return_map_square(map);
-	int	k = 0;
-	while (map->only_map[k])
-	{
-		printf("%s\n", map->only_map[k]);
-		k++;
-	}
 }
 
 int	main(int ac, char **av)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:18:18 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 01:32:05 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 03:08:05 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ void	loop_rays(t_data *data)
 	}
 }
 
-void	render_sky(t_data *data, int color, t_img *img)
+void	render_sky(t_data *data, t_img *img)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	(void)color;
 	while (y < data->mlx->w_h / 2)
 	{
 		x = 0;
@@ -51,12 +50,11 @@ void	render_sky(t_data *data, int color, t_img *img)
 	}
 }
 
-void	render_floor(t_data *data, int color, t_img *img)
+void	render_floor(t_data *data, t_img *img)
 {
 	int	x;
 	int	y;
 
-	(void)color;
 	y = data->mlx->w_h / 2;
 	while (y < data->mlx->w_h)
 	{
