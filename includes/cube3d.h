@@ -6,7 +6,7 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:59 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/08 19:47:48 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 01:29:47 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define SO 2
 # define WE 3
 # define EA 4
-# define UNIT 64
+# define UNIT 32
 # define P_W 320
 # define P_H 200
 # define PI 3.14159265358979323846
@@ -115,7 +115,7 @@ t_data			*get_data(t_map *map);
 void			free_tab(char **tab);
 
 //--------------level drawing functions----------------
-int 			get_texel(t_data *data, int x, int y, int slice, int is_v);
+int				get_texel(t_data *data, int x, int y, int slice);
 //--------------math funcs-------------------
 
 double			limit_angles(double ra);

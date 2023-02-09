@@ -6,7 +6,7 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:18:18 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 19:06:36 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 01:32:05 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ void	is_collided(double x, double y, t_data *data)
 	if (data->lvl->only_map[map_y][map_x]
 		&& data->lvl->only_map[map_y][map_x] == '1')
 		return ;
-	if(data->lvl->only_map[map_y][(int)data->ply->p_pos->x / UNIT] == '1' && data->lvl->only_map[(int)data->ply->p_pos->y / UNIT][map_x] == '1')
+	if (data->lvl->only_map[map_y][(int)data->ply->p_pos->x / UNIT] == '1'
+			&& data->lvl->only_map[(int)data->ply->p_pos->y
+				/ UNIT][map_x] == '1')
 		return ;
 	else
 	{

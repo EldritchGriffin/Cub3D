@@ -6,7 +6,7 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:47:49 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/08 19:37:04 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 01:31:40 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	mlx_get_color_at(void *img, int x, int y, unsigned int *color)
 	int		size_line;
 	int		endian;
 
-	data_ptr = (char *)mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
-	*color = *(unsigned int *)(data_ptr + (y * size_line) + (x * (bits_per_pixel / 8)));
+	data_ptr = (char *)mlx_get_data_addr(img, &bits_per_pixel,
+			&size_line, &endian);
+	*color = *(unsigned int *)(data_ptr + (y * size_line)
+			+ (x * (bits_per_pixel / 8)));
 }

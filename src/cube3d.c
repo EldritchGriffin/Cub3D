@@ -6,7 +6,7 @@
 /*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:56 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/08 16:51:39 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 01:38:26 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int main(int ac, char **av)
 	data->lvl->cl_c = create_rgb(data->lvl->r_c, data->lvl->g_c, data->lvl->b_c);
 	data->lvl->fl_c = create_rgb(data->lvl->r_f, data->lvl->g_f, data->lvl->b_f);
 	int a;
-	data->img = mlx_xpm_file_to_image(data->mlx->mp, "/Users/aelyakou/Desktop/cubefinale/xpm_files/TECH_4A_1.xpm", &a, &a);
+	data->img = mlx_xpm_file_to_image(data->mlx->mp, "/Users/aelyakou/Desktop/cubefinale/xpm_files/test.xpm", &a, &a);
 	mlx_hook(data->mlx->w3, 2, 0, keydown, data);
 	mlx_hook(data->mlx->w3, 3, 0, keyup, data);
 	mlx_hook(data->mlx->w3, 17,0, ft_quit, data);
