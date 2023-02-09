@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+         #
+#    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/30 18:55:39 by skasmi            #+#    #+#              #
-#    Updated: 2023/02/08 02:29:13 by aelyakou         ###   ########.fr        #
+#    Updated: 2023/02/09 01:45:28 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCS=Parssing/cub3d.c \
 	src/additional.c \
 	src/init_utils.c \
 	src/raycasting.c \
+	src/raycast_utils.c \
 	src/rendering/mlx_adds.c
 	
 	

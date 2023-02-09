@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:59 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/08 19:47:48 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 01:56:17 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ t_data			*get_data(t_map *map);
 void			free_tab(char **tab);
 
 //--------------level drawing functions----------------
-int 			get_texel(t_data *data, int x, int y, int slice, int is_v);
+int				get_texel(t_data *data, int x, int y, int slice);
 //--------------math funcs-------------------
 
 double			limit_angles(double ra);
@@ -126,6 +126,11 @@ double			normalize_ray(double rl, double ra, t_data *data);
 //--------------raycasting funcs------------------------
 
 double			cast_ray(t_data *data, int i);
+int				check_bounds(t_data *data, t_pos *wpos, double xa, double ya);
+t_pos			check_wall_v(double *res, double ra, t_data *data);
+double			get_vwx(t_data *data, int dir);
+int				get_dir_v(double ra);
+int				get_dir_h(double ra);
 
 //-------------mlx_mods---------------------------------
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_rgb_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:23:44 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 17:09:04 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 00:44:45 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ int	ft_check_number_of_comma(char *str)
 
 void copy_texture(char *type, char *path, t_texture *t)
 {
-	
-	if (!path)
-		exit(1);
 	if (type[0] == 'W')
 	{	
 		if (t->we == NULL)
@@ -93,6 +90,11 @@ void ft_check_txt(char *path, char *type, t_texture *t)
 	len = ft_strlen(path);
 	i = 0;
 	char **str = ft_split(path, ' ');
+	if (!str[1])
+	{
+		printf("error texture\n");
+		exit (1);
+	}
 	if (!ft_strncmp(path, type, 3))
 	{
 		fd = open(str[1], O_RDWR);
@@ -102,7 +104,6 @@ void ft_check_txt(char *path, char *type, t_texture *t)
 			exit (1);
 		}
 		close(fd);
-		(void)t;
 		copy_texture(&type[0], str[1], t);
 	}
 	
