@@ -6,54 +6,53 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 22:07:51 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 01:43:06 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:10:31 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int check(char *str) 
+int	check(char *str)
 {
-	int	i;
-	bool	foundNumber;
-	
+	int		i;
+	bool	foundnum;
+
 	i = 1;
-	foundNumber = false;
-	while(str[i]) 
+	foundnum = false;
+	while (str[i])
 	{
-		if (str[i] == ' ') 
+		if (str[i] == ' ')
 		{
-			if (foundNumber == false)
+			if (foundnum == false)
 			{
 				i++;
-				continue;
+				continue ;
 			}
-			if (foundNumber == true) 
+			if (foundnum == true)
 			{
 				while (str[i])
 				{
 					if (str[i] != ' ')
-						return 1;
+						return (1);
 					i++;
 				}
-				return 0;
+				return (0);
 			}
 		}
-		foundNumber = true;
+		foundnum = true;
 		if (ft_isdigit(str[i]) == 0)
-			return 1;
+			return (1);
 		i++;
 	}
-	return 0;
+	return (0);
 }
 
-void ft_free(char **tab)
+void	ft_free(char **tab)
 {
-	int j;
+	int	j;
 
 	j = 0;
-	while(tab[j])
+	while (tab[j])
 		free(tab[j++]);
 	free(tab);
 }
-

@@ -6,15 +6,15 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:18:40 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/17 23:41:15 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:19:55 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int	i;
+	int			i;
 	long long	m;
 	long long	w;
 

@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 01:30:56 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:17:40 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,6 @@ typedef struct s_map
 	t_texture		*t;
 }					t_map;
 
-typedef struct s_rgb
-{
-	long long		r_F;
-	long long		g_F;
-	long long		b_F;
-	long long		r_C;
-	long long		g_C;
-	long long		b_C;
-}					t_rgb;
-
 // parssing functions
 void				ft_free(char **tab);
 void				ft_read_map(t_map *t, char **av);
@@ -146,8 +136,8 @@ char				*ft_line(char *str);
 char				*ft_read(char *str, int fd);
 char				*ft_rest(char *st);
 char				*ft_strjoin(char *s1, char *s2);
-
-//execution
-void				execution(t_map map);
+int					get_height(char **str);
+void				ft_read_map(t_map *t, char **av);
+int					get_width(char **str);
 
 #endif

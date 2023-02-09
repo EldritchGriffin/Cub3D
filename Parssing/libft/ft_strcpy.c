@@ -6,16 +6,16 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 21:47:21 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 21:47:58 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:19:25 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strcpy(char *str, char *str2)
+char	*ft_strcpy(char *str, char *str2)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	j = 0;
@@ -25,7 +25,7 @@ char *ft_strcpy(char *str, char *str2)
 	{
 		str2[j] = str[i];
 		j++;
-		i++; 
+		i++;
 	}
 	str2[j] = '\0';
 	return (str2);

@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:58:28 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/06 22:45:11 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:20:13 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_substr(char *s, int start, int len)
 {
 	char	*ptr;
-	int	i;
+	int		i;
 
 	i = -1;
 	if (!s)

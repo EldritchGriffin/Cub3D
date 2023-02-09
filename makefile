@@ -6,7 +6,7 @@
 #    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/30 18:55:39 by skasmi            #+#    #+#              #
-#    Updated: 2023/02/09 01:45:28 by skasmi           ###   ########.fr        #
+#    Updated: 2023/02/09 02:18:00 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ NAME2=Parssing/cub3d.h
 
 SRCS=Parssing/cub3d.c \
 	Parssing/parssing/pars_rgb/pars_rgb.c \
+	Parssing/utils.c \
 	Parssing/parssing/pars_rgb/pars_rgb_2.c \
 	Parssing/parssing/pars_rgb/utils_rgb.c \
 	Parssing/parssing/pars_map/pars_map.c \

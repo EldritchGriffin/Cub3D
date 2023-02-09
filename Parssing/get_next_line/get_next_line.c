@@ -1,43 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/09 02:18:51 by skasmi            #+#    #+#             */
+/*   Updated: 2023/02/09 02:19:10 by skasmi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
-
-// char	*get_next_line(int fd)
-// {
-// 	int r;
-// 	int rd;
-// 	char *ret;
-
-// 	rd = 0;
-// 	ret = malloc(99999);
-// 	if (!ret)
-// 		return (NULL);
-// 	if(fd < 0)
-// 		return (NULL);
-// 	r = read(fd, ret + rd, 1);
-// 	rd += r;
-// 	while (r != 0 && ret[rd -1] != '\n')
-// 	{
-// 		r = read(fd, ret + rd, 1);
-// 		rd += r;
-// 		if (r == -1)
-// 		{
-// 			free(ret);
-// 			return (NULL);
-// 		}
-// 	}
-// 	ret[rd] = '\0';
-// 	if (!ret || !*ret)
-// 	{
-// 		free(ret);
-// 		return (NULL);
-// 	}
-// 	return (ret);
-// }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	int	len;
-	int	j;
+	int		len;
+	int		j;
 
 	if (s1 == NULL)
 	{
@@ -63,8 +42,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*ft_rest(char *st)
 {
-	int	i;
-	int	k;
+	int		i;
+	int		k;
 	char	*rest;
 
 	i = 0;
@@ -97,7 +76,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	str = ft_read(str, fd);
-	if (str == NULL )
+	if (str == NULL)
 		return (NULL);
 	line = ft_line(str);
 	str = ft_rest(str);
