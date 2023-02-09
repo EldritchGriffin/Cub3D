@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:23:44 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 02:10:01 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:45:22 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ int	ft_check_number_of_comma(char *str)
 	return (nb);
 }
 
+void	ft_perror(void)
+{
+	printf("ERROR texture\n");
+	exit(1);
+}
+
 void	copy_texture(char *type, char *path, t_texture *t)
 {
 	if (type[0] == 'W')
@@ -35,46 +41,31 @@ void	copy_texture(char *type, char *path, t_texture *t)
 		if (t->we == NULL)
 			t->we = ft_strdup(path);
 		else
-		{
-			printf("6ERROR texture\n");
-			exit(1);
-		}
+			ft_perror();
 	}
 	else if (type[0] == 'E')
 	{
 		if (t->ea == NULL)
 			t->ea = ft_strdup(path);
 		else
-		{
-			printf("6ERROR texture\n");
-			exit(1);
-		}
+			ft_perror();
 	}
 	else if (type[0] == 'S')
 	{
 		if (t->so == NULL)
 			t->so = ft_strdup(path);
 		else
-		{
-			printf("0ERROR texture\n");
-			exit(1);
-		}
+			ft_perror();
 	}
 	else if (type[0] == 'N')
 	{
 		if (t->no == NULL)
 			t->no = ft_strdup(path);
 		else
-		{
-			printf("*ERROR texture\n");
-			exit(1);
-		}
+			ft_perror();
 	}
 	else
-	{
-		printf("Error texture\n");
-		exit(1);
-	}
+		ft_perror();
 }
 
 void	ft_check_txt(char *path, char *type, t_texture *t)
@@ -88,18 +79,12 @@ void	ft_check_txt(char *path, char *type, t_texture *t)
 	i = 0;
 	str = ft_split(path, ' ');
 	if (!str[1])
-	{
-		printf("error texture\n");
-		exit(1);
-	}
+		ft_perror();
 	if (!ft_strncmp(path, type, 3))
 	{
 		fd = open(str[1], O_RDWR);
 		if (fd < 0)
-		{
-			printf("Error texture\n");
-			exit(1);
-		}
+			ft_perror();
 		close(fd);
 		copy_texture(&type[0], str[1], t);
 	}

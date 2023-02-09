@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:44:31 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/08 01:42:28 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 03:04:52 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	retrun_map_2d_withspace(t_map *map)
 			nb = ft_strlen(map->only_map[k]);
 			while (nb != count_width)
 			{
-				map->only_map[k] = ft_strjoin(map->only_map[k], "1");
+				map->only_map[k] = ft_strjoin(map->only_map[k], " ");
 				nb++;
 			}
 			k++;
@@ -72,7 +72,7 @@ void	retrun_map_2d_withspace(t_map *map)
 		else
 			k++;
 		count--;
-	}
+	}	
 }
 
 int	ft_check_all_map(char **map)

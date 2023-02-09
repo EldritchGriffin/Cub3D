@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:56 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 02:37:01 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 03:04:57 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@ void	ft_parse(char	**av, t_map	*map)
 		exit(EXIT_FAILURE);
 	}
 	ft_return_map_square(map);
+	int	k = 0;
+	while (map->only_map[k])
+	{
+		printf("%s\n", map->only_map[k]);
+		k++;
+	}
 }
 
 int	main(int ac, char **av)
