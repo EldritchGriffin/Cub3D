@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:57:50 by skasmi            #+#    #+#             */
-/*   Updated: 2022/11/05 20:12:08 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:26:57 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_line(char *str)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*line;
 
 	i = 0;
@@ -73,4 +73,3 @@ char	*ft_read(char *str, int fd)
 	free(buff);
 	return (str);
 }
-

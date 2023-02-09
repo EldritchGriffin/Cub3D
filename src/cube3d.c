@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:56 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 02:06:18 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:37:01 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,27 @@ void	ft_return_map_square(t_map *map)
 	}
 }
 
-int	keydown(int keycode, t_data *data)
+void	ft_parse(char	**av, t_map	*map)
 {
-	get_m_dir(keycode, data);
-	get_r_dir(keycode, data);
-	if (keycode == 53)
-		ft_quit(data);
-	return (keycode);
+	ft_read_map(map, av);
+	map->map_width = get_len(map->all_map2d);
+	ft_check_line_before_map(map->all_map2d, map);
+	ft_check_map_len(map);
+	if (ft_export_only_map2d(map) == 1)
+	{
+		printf("errooooor");
+		exit(1);
+	}
+	map->width_only_map = get_width(map->only_map);
+	map->height_only_map = get_height(map->only_map);
+	retrun_map_2d_withspace(map);
+	if (ft_check_content(map) || ft_check_all_map(map->only_map)
+		|| ft_check_horizontal(map) || ft_check_vertical(map))
+	{
+		printf("error walls content\n");
+		exit(EXIT_FAILURE);
+	}
+	ft_return_map_square(map);
 }
 
 int	main(int ac, char **av)
@@ -80,53 +94,21 @@ int	main(int ac, char **av)
 	t_map		map;
 	t_texture	t;
 
-	//*********
-	t.ea = NULL;
-	t.no = NULL;
-	t.so = NULL;
-	t.we = NULL;
 	map.t = &t;
 	map.line_empty = 0;
-	if (ac != 2)
+	if (ac != 2 || ft_check_file_map(av) == 1)
 	{
 		printf("Error Args !!!\n");
 		exit(1);
 	}
-	if (ft_check_file_map(av) == 1)
-	{
-		printf("\033[0;31mextention of map must finished -> .cub !!\n");
-		exit(1);
-	}
-	ft_read_map(&map, av);
-	map.map_width = get_len(map.all_map2d);
-	ft_check_line_before_map(map.all_map2d, &map);
-	ft_check_map_len(&map);
-	if (ft_export_only_map2d(&map) == 1)
-	{
-		printf("errooooor");
-		exit(1);
-	}
-	map.width_only_map = get_width(map.only_map);
-	map.height_only_map = get_height(map.only_map);
-	retrun_map_2d_withspace(&map);
-	if (ft_check_content(&map) || ft_check_all_map(map.only_map) ||
-		ft_check_horizontal(&map) || ft_check_vertical(&map))
-	{
-		printf("error walls content\n");
-		exit(EXIT_FAILURE);
-	}
-	ft_return_map_square(&map);
+	ft_parse(av, &map);
 	data = get_data(&map);
 	if (!data)
 		return (0);
-	/*******/
 	data->lvl->cl_c = create_rgb(data->lvl->r_c, data->lvl->g_c,
 			data->lvl->b_c);
 	data->lvl->fl_c = create_rgb(data->lvl->r_f, data->lvl->g_f,
 			data->lvl->b_f);
-	int a;
-	data->img = mlx_xpm_file_to_image(data->mlx->mp,
-			"/Users/skasmi/Cub3D/xpm_files/test.xpm", &a, &a);
 	mlx_hook(data->mlx->w3, 2, 0, keydown, data);
 	mlx_hook(data->mlx->w3, 3, 0, keyup, data);
 	mlx_hook(data->mlx->w3, 17, 0, ft_quit, data);

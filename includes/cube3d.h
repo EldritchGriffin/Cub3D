@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:59 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 01:58:35 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 02:37:53 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void			render_level2d(t_data *data);
 void			render_slice(t_data *data, int slice, int x);
 void			render_walls3d(t_data *data);
 int				keyup(int keycode, t_data *data);
+int				keydown(int keycode, t_data *data);
 void			get_m_dir(int keycode, t_data *data);
 void			get_r_dir(int keycode, t_data *data);
 #endif

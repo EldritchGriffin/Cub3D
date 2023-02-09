@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:20:52 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 01:31:08 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/09 02:37:29 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,13 @@ int	get_texel(t_data *data, int x, int y, int slice)
 	}
 	mlx_get_color_at(data->img, text_x, text_y, &color);
 	return (color);
+}
+
+int	keydown(int keycode, t_data *data)
+{
+	get_m_dir(keycode, data);
+	get_r_dir(keycode, data);
+	if (keycode == 53)
+		ft_quit(data);
+	return (keycode);
 }
