@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:20:52 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 02:37:29 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 20:31:38 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,28 @@ void	p_rotate(t_data *data)
 	data->ply->pa = limit_angles(data->ply->pa);
 }
 
+void	*text_orient(t_data	*data, int x)
+{
+	if(data->rays[x].orient == 'N')
+		return (data->no);
+	if(data->rays[x].orient == 'E')
+		return (data->ea);
+	if(data->rays[x].orient == 'S')
+		return (data->so);
+	if(data->rays[x].orient == 'W')
+		return (data->we);
+	return (NULL);
+}
+
 int	get_texel(t_data *data, int x, int y, int slice)
 {
 	int				text_x;
 	int				text_y;
 	unsigned int	color;
+	void			*img;
 
 	text_x = (int)data->rays[x].wall_pos.x % UNIT;
+	img = text_orient(data, x);
 	if (data->rays[x].is_v)
 	{
 		text_x = (int)data->rays[x].wall_pos.y % UNIT;
@@ -68,7 +83,7 @@ int	get_texel(t_data *data, int x, int y, int slice)
 		text_y = ((y - ((data->mlx->w_h / 2) - (slice / 2)))
 				* ((double)(double)UNIT / (double)slice));
 	}
-	mlx_get_color_at(data->img, text_x, text_y, &color);
+	mlx_get_color_at(img, text_x, text_y, &color);
 	return (color);
 }
 

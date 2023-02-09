@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 22:21:10 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 02:03:39 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 20:06:33 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,13 @@ t_pos	check_wall_h(double *res, double ra, t_data *data)
 	return (wpos);
 }
 
-double	cast_ray(t_data *data, int i)
+double	cast_ray(t_data *data, int i, double ra)
 {
 	double	h;
 	double	v;
-	double	ra;
 	t_pos	wposv;
 	t_pos	wposh;
 
-	ra = (data->ply->pa + 30.0) - ((double)(i)*data->abr);
-	ra = limit_angles(ra);
 	data->rays[i].ra = ra;
 	h = INFINITY;
 	v = INFINITY;

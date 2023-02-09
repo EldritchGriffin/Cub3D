@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:59 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 03:08:15 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 21:12:33 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define SO 2
 # define WE 3
 # define EA 4
-# define UNIT 32
+# define UNIT 64
 # define P_W 320
 # define P_H 200
 # define PI 3.14159265358979323846
@@ -78,6 +78,7 @@ typedef struct s_ray
 	double		dist;
 	t_pos		wall_pos;
 	int			is_v;
+	char		orient;
 }				t_ray;
 
 typedef struct s_textures
@@ -103,7 +104,10 @@ typedef struct s_data
 	t_textures	*east;
 	t_textures	*west;
 	t_map		*lvl;
-	void		*img;
+	void		*no;
+	void		*so;
+	void		*ea;
+	void		*we;
 
 }				t_data;
 
@@ -125,7 +129,7 @@ double			normalize_ray(double rl, double ra, t_data *data);
 
 //--------------raycasting funcs------------------------
 
-double			cast_ray(t_data *data, int i);
+double			cast_ray(t_data *data, int i, double ra);
 int				check_bounds(t_data *data, t_pos *wpos, double xa, double ya);
 t_pos			check_wall_v(double *res, double ra, t_data *data);
 double			get_vwx(t_data *data, int dir);

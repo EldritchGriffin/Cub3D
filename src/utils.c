@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:18:18 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 03:08:05 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 20:21:55 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,37 @@ int	ft_quit(t_data *data)
 	return (0);
 }
 
+char	assign_ray_orient(double ra, int is_v)
+{
+	if (is_v)
+	{
+		if (get_dir_h(ra) == 1)
+			return ('E');
+		else
+			return ('W');
+	}
+	else
+	{
+		if (get_dir_v(ra) == 1)
+			return ('S');
+		else
+			return ('N');
+	}
+}
+
 void	loop_rays(t_data *data)
 {
-	int	i;
+	int		i;
+	double	ra;
 
 	data->rays = malloc(sizeof(t_ray) * data->mlx->w_w - 1);
 	i = data->mlx->w_w - 1;
 	while (i >= 0)
 	{
-		data->rays[i].dist = cast_ray(data, i);
+		ra = (data->ply->pa + 30.0) - ((double)(i)*data->abr);
+		ra = limit_angles(ra);
+		data->rays[i].dist = cast_ray(data, i, ra);
+		data->rays[i].orient = assign_ray_orient(ra, data->rays[i].is_v);
 		i--;
 	}
 }

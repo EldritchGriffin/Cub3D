@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:15:04 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 02:35:46 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 20:31:49 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,21 @@ void	plyr_init(t_ply *ply, t_map *lvl)
 
 void	img_init(t_data *data)
 {
+	int	a;
+
 	data->wrld->img = mlx_new_image(data->mlx->mp, data->mlx->w_w,
 			data->mlx->w_h);
 	data->wrld->addr = mlx_get_data_addr(data->wrld->img, &data->wrld->bpp,
 			&data->wrld->len, &data->wrld->endn);
+	data->so = mlx_xpm_file_to_image(data->mlx->mp, data->lvl->t->so, &a, &a);
+	data->no = mlx_xpm_file_to_image(data->mlx->mp, data->lvl->t->no, &a, &a);
+	data->ea = mlx_xpm_file_to_image(data->mlx->mp, data->lvl->t->ea, &a, &a);
+	data->we = mlx_xpm_file_to_image(data->mlx->mp, data->lvl->t->we, &a, &a);
 }
 
 t_data	*get_data(t_map *map)
 {
 	t_data	*data;
-	int		a;
 
 	ft_init_data(&data, map);
 	init_mlx(data->mlx);
@@ -76,7 +81,5 @@ t_data	*get_data(t_map *map)
 	img_init(data);
 	data->dsp = ((data->mlx->w_w / 2) / tanf(deg_to_rad(data->ply->fov / 2)));
 	data->abr = data->ply->fov / data->mlx->w_w;
-	data->img = mlx_xpm_file_to_image(data->mlx->mp,
-			"/Users/skasmi/Cub3D/xpm_files/test.xpm", &a, &a);
 	return (data);
 }

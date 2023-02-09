@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:56 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 03:07:47 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/09 20:27:59 by aelyakou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	update(t_data *data)
 	render_walls3d(data);
 	mlx_put_image_to_window(data->mlx->mp, data->mlx->w3, data->wrld->img, 0,
 		0);
-	mlx_put_image_to_window(data->mlx->mp, data->mlx->w3, data->img, 0, 0);
 	return (0);
 }
 
