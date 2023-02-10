@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:56 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 20:27:59 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/10 01:20:52 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	ft_parse(char	**av, t_map	*map)
 	map->map_width = get_len(map->all_map2d);
 	ft_check_line_before_map(map->all_map2d, map);
 	ft_check_map_len(map);
-	if (ft_export_only_map2d(map) == 1)
+	if (ft_export_only_map2d(map) == 1 || map->check_dup != 2)
 	{
-		printf("errooooor");
+		printf("Error\n");
 		exit(1);
 	}
 	map->width_only_map = get_width(map->only_map);
@@ -95,6 +95,7 @@ int	main(int ac, char **av)
 
 	map.t = &t;
 	map.line_empty = 0;
+	map.check_dup = 0;
 	if (ac != 2 || ft_check_file_map(av) == 1)
 	{
 		printf("Error Args !!!\n");

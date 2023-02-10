@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 02:17:40 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/10 01:16:18 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_texture
 
 typedef struct s_map
 {
+	int				check_dup;
 	double			position_player_x;
 	double			position_player_y;
 	void			*mlx_ptr;
@@ -139,5 +140,6 @@ char				*ft_strjoin(char *s1, char *s2);
 int					get_height(char **str);
 void				ft_read_map(t_map *t, char **av);
 int					get_width(char **str);
+void				ft_check_color(char *line, t_map *map);
 
 #endif

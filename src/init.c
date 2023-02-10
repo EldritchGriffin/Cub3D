@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:15:04 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 20:31:49 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/10 01:23:52 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	img_init(t_data *data)
 	data->no = mlx_xpm_file_to_image(data->mlx->mp, data->lvl->t->no, &a, &a);
 	data->ea = mlx_xpm_file_to_image(data->mlx->mp, data->lvl->t->ea, &a, &a);
 	data->we = mlx_xpm_file_to_image(data->mlx->mp, data->lvl->t->we, &a, &a);
+	if (!data->so || !data->no || !data->ea || !data->we)
+		exit(1);
 }
 
 t_data	*get_data(t_map *map)

@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 22:07:51 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 02:10:31 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/10 00:58:59 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,16 @@ void	ft_free(char **tab)
 	while (tab[j])
 		free(tab[j++]);
 	free(tab);
+}
+
+void	ft_check_color(char *line, t_map *map)
+{
+	char	*file;
+
+	file = ft_strdup(line);
+	if (ft_check_rgb_error_f(file, map) == 1)
+	{
+		printf("ERROR rgb color\n");
+		exit(1);
+	}
 }
