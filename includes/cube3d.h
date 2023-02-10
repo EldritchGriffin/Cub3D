@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:59 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/09 21:12:33 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/10 03:03:15 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,6 @@ typedef struct s_ray
 	char		orient;
 }				t_ray;
 
-typedef struct s_textures
-{
-	void		*img;
-	int			width;
-	int			height;
-	int			*buff;
-	int			bpp;
-	int			len;
-}				t_textures;
-
 typedef struct s_data
 {
 	t_ply		*ply;
@@ -99,10 +89,6 @@ typedef struct s_data
 	double		dsp;
 	t_ray		*rays;
 	t_img		*wrld;
-	t_textures	*north;
-	t_textures	*south;
-	t_textures	*east;
-	t_textures	*west;
 	t_map		*lvl;
 	void		*no;
 	void		*so;
@@ -159,4 +145,5 @@ int				keyup(int keycode, t_data *data);
 int				keydown(int keycode, t_data *data);
 void			get_m_dir(int keycode, t_data *data);
 void			get_r_dir(int keycode, t_data *data);
+int				keydown(int keycode, t_data *data);
 #endif

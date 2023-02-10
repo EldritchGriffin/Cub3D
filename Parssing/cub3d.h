@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/10 01:16:18 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/10 02:31:07 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,8 @@ int					get_height(char **str);
 void				ft_read_map(t_map *t, char **av);
 int					get_width(char **str);
 void				ft_check_color(char *line, t_map *map);
+void				ft_perror(void);
+void				ft_assign_frgb(char **rgb, t_map *t);
+void				ft_assign_crgb(char **rgb, t_map *map);
 
 #endif

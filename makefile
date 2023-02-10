@@ -6,12 +6,12 @@
 #    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/30 18:55:39 by skasmi            #+#    #+#              #
-#    Updated: 2023/02/09 02:18:00 by skasmi           ###   ########.fr        #
+#    Updated: 2023/02/10 02:33:45 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
-CFLAGS=  -Wall -Wextra -Werror -Imlx #-fsanitize=undefined
+CFLAGS=  -Wall -Wextra -Werror -Imlx 
 
 NAME=cub3D
 NAME2=Parssing/cub3d.h
@@ -24,6 +24,7 @@ SRCS=Parssing/cub3d.c \
 	Parssing/parssing/pars_map/pars_map.c \
 	Parssing/parssing/pars_map/pars_map_2.c \
 	Parssing/parssing/pars_map/pars_map_3.c \
+	Parssing/parssing/pars_rgb/pars_assign_rgb.c \
 	Parssing/libft/ft_strlen.c \
 	Parssing/libft/ft_split.c \
 	Parssing/libft/ft_strtrim.c \
@@ -43,6 +44,7 @@ SRCS=Parssing/cub3d.c \
 	src/utils.c \
 	src/utils2.c \
 	src/utils3.c \
+	src/utils4.c \
 	src/cube3d.c \
 	src/convert.c \
 	src/additional.c \

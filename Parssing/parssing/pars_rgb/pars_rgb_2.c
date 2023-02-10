@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:23:44 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/10 01:17:04 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/10 04:26:11 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,22 @@ int	ft_check_number_of_comma(char *str)
 	return (nb);
 }
 
-void	ft_perror(void)
+void	copy_texture2(char *type, char *path, t_texture *t)
 {
-	printf("ERROR texture\n");
-	exit(1);
+	if (type[0] == 'S')
+	{
+		if (t->so == NULL)
+			t->so = ft_strdup(path);
+		else
+			ft_perror();
+	}
+	else if (type[0] == 'N')
+	{
+		if (t->no == NULL)
+			t->no = ft_strdup(path);
+		else
+			ft_perror();
+	}
 }
 
 void	copy_texture(char *type, char *path, t_texture *t)
@@ -50,22 +62,11 @@ void	copy_texture(char *type, char *path, t_texture *t)
 		else
 			ft_perror();
 	}
-	else if (type[0] == 'S')
-	{
-		if (t->so == NULL)
-			t->so = ft_strdup(path);
-		else
-			ft_perror();
-	}
-	else if (type[0] == 'N')
-	{
-		if (t->no == NULL)
-			t->no = ft_strdup(path);
-		else
-			ft_perror();
-	}
+	else if (type[0] == 'S' || type[0] == 'N')
+		copy_texture2(type, path, t);
 	else
 		ft_perror();
+	free(path);
 }
 
 void	ft_check_txt(char *path, char *type, t_texture *t)
@@ -88,6 +89,8 @@ void	ft_check_txt(char *path, char *type, t_texture *t)
 		close(fd);
 		copy_texture(&type[0], str[1], t);
 	}
+	free(str[0]);
+	free(str);
 }
 
 void	check_line_txt_rgb(char *str, t_map *map)
@@ -95,7 +98,7 @@ void	check_line_txt_rgb(char *str, t_map *map)
 	if (str[0] && str[0] == 'C')
 	{
 		ft_check_color2(str, map);
-		map->check_dup++;	
+		map->check_dup++;
 	}
 	else if (str[0] && str[0] == 'F')
 	{

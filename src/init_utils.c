@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 14:56:09 by zrabhi            #+#    #+#             */
-/*   Updated: 2023/02/08 01:16:16 by skasmi           ###   ########.fr       */
+/*   Created: 2022/11/29 14:56:09 by aelyakou          #+#    #+#             */
+/*   Updated: 2023/02/10 05:10:16 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 void	ft_init_data(t_data **data, t_map *map)
 {
 	(*data) = malloc(sizeof(t_data));
-	(*data)->lvl = malloc(sizeof(t_map));
+	if (!(*data))
+		exit(1);
 	(*data)->lvl = map;
 	(*data)->mlx = malloc(sizeof(t_mlx));
+	if (!(*data)->mlx)
+		exit(1);
 	(*data)->ply = malloc(sizeof(t_ply));
+	if (!(*data)->ply)
+		exit(1);
 	(*data)->wrld = malloc(sizeof(t_img));
-	(*data)->north = malloc(sizeof(t_texture));
-	(*data)->south = malloc(sizeof(t_texture));
-	(*data)->east = malloc(sizeof(t_texture));
-	(*data)->west = malloc(sizeof(t_texture));
+	if (!(*data)->wrld)
+		exit(1);
 }

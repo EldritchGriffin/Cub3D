@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:18:18 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 20:21:55 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/10 05:07:57 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 int	ft_quit(t_data *data)
 {
-	(void)data;
+	mlx_destroy_image(data->mlx->mp, data->wrld->img);
+	mlx_destroy_image(data->mlx->mp, data->we);
+	mlx_destroy_image(data->mlx->mp, data->so);
+	mlx_destroy_image(data->mlx->mp, data->no);
+	mlx_destroy_image(data->mlx->mp, data->ea);
+	mlx_destroy_window(data->mlx->mp, data->mlx->w3);
+	ft_free(data->lvl->only_map);
+	free(data->ply->p_pos);
+	free(data->ply);
+	free(data->rays);
+	free(data->mlx);
+	free(data);
 	exit(0);
 	return (0);
 }
@@ -43,6 +54,8 @@ void	loop_rays(t_data *data)
 	double	ra;
 
 	data->rays = malloc(sizeof(t_ray) * data->mlx->w_w - 1);
+	if (!data->rays)
+		return ;
 	i = data->mlx->w_w - 1;
 	while (i >= 0)
 	{
@@ -88,26 +101,4 @@ void	render_floor(t_data *data, t_img *img)
 		}
 		y++;
 	}
-}
-
-void	is_collided(double x, double y, t_data *data)
-{
-	int	map_x;
-	int	map_y;
-
-	map_x = x / UNIT;
-	map_y = y / UNIT;
-	if (data->lvl->only_map[map_y][map_x]
-		&& data->lvl->only_map[map_y][map_x] == '1')
-		return ;
-	if (data->lvl->only_map[map_y][(int)data->ply->p_pos->x / UNIT] == '1'
-			&& data->lvl->only_map[(int)data->ply->p_pos->y
-				/ UNIT][map_x] == '1')
-		return ;
-	else
-	{
-		data->ply->p_pos->x = x;
-		data->ply->p_pos->y = y;
-	}
-	return ;
 }

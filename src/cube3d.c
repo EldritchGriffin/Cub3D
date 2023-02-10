@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:41:56 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/10 01:20:52 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/10 05:08:40 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	ft_return_map_square(t_map *map)
 
 void	ft_parse(char	**av, t_map	*map)
 {
+	map->check_dup = 0;
 	ft_read_map(map, av);
 	map->map_width = get_len(map->all_map2d);
 	ft_check_line_before_map(map->all_map2d, map);
@@ -84,6 +85,7 @@ void	ft_parse(char	**av, t_map	*map)
 		printf("error walls content\n");
 		exit(EXIT_FAILURE);
 	}
+	ft_free(map->all_map2d);
 	ft_return_map_square(map);
 }
 
@@ -95,7 +97,6 @@ int	main(int ac, char **av)
 
 	map.t = &t;
 	map.line_empty = 0;
-	map.check_dup = 0;
 	if (ac != 2 || ft_check_file_map(av) == 1)
 	{
 		printf("Error Args !!!\n");

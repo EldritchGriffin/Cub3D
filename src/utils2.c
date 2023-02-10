@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:20:52 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 20:31:38 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/10 01:34:39 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,15 @@ void	p_rotate(t_data *data)
 	data->ply->pa = limit_angles(data->ply->pa);
 }
 
-void	*text_orient(t_data	*data, int x)
+void	*text_orient(t_data *data, int x)
 {
-	if(data->rays[x].orient == 'N')
+	if (data->rays[x].orient == 'N')
 		return (data->no);
-	if(data->rays[x].orient == 'E')
+	if (data->rays[x].orient == 'E')
 		return (data->ea);
-	if(data->rays[x].orient == 'S')
+	if (data->rays[x].orient == 'S')
 		return (data->so);
-	if(data->rays[x].orient == 'W')
+	if (data->rays[x].orient == 'W')
 		return (data->we);
 	return (NULL);
 }
@@ -85,13 +85,4 @@ int	get_texel(t_data *data, int x, int y, int slice)
 	}
 	mlx_get_color_at(img, text_x, text_y, &color);
 	return (color);
-}
-
-int	keydown(int keycode, t_data *data)
-{
-	get_m_dir(keycode, data);
-	get_r_dir(keycode, data);
-	if (keycode == 53)
-		ft_quit(data);
-	return (keycode);
 }

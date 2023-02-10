@@ -6,18 +6,32 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 22:07:51 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/10 00:58:59 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/10 03:18:46 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+int	ft_contine_check(char *str, bool foundnum, int *i)
+{
+	if (foundnum == true)
+	{
+		while (str[(*i)])
+		{
+			if (str[(*i)] != ' ')
+				return (1);
+			(*i)++;
+		}
+	}
+	return (0);
+}
 
 int	check(char *str)
 {
 	int		i;
 	bool	foundnum;
 
-	i = 1;
+	i = 0;
 	foundnum = false;
 	while (str[i])
 	{
@@ -28,16 +42,10 @@ int	check(char *str)
 				i++;
 				continue ;
 			}
-			if (foundnum == true)
-			{
-				while (str[i])
-				{
-					if (str[i] != ' ')
-						return (1);
-					i++;
-				}
+			if (ft_contine_check(str, foundnum, &i) == 0)
 				return (0);
-			}
+			else
+				return (1);
 		}
 		foundnum = true;
 		if (ft_isdigit(str[i]) == 0)
@@ -67,4 +75,11 @@ void	ft_check_color(char *line, t_map *map)
 		printf("ERROR rgb color\n");
 		exit(1);
 	}
+	free(file);
+}
+
+void	ft_perror(void)
+{
+	printf("ERROR texture\n");
+	exit(1);
 }

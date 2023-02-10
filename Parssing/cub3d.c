@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/09 02:13:46 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/10 04:26:51 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	check_empty_line(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '\n' && str[i + 1] != '\0')
+		if ((str[i] == '\n' && str[i + 1] == '\n') && str[i + 1] != '\0')
 		{
 			i++;
 			while (str[i] == ' ' || str[i] == '\t')
@@ -100,8 +100,10 @@ int	ft_export_only_map2d(t_map *t)
 	if (check_empty_line(t->export_only_map) == 1)
 	{
 		printf("map error\n");
+		free(t->export_only_map);
 		exit(1);
 	}
 	t->only_map = ft_split(t->export_only_map, '\n');
+	free(t->export_only_map);
 	return (0);
 }

@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   pars_assign_rgb.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 15:56:24 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/10 03:37:56 by skasmi           ###   ########.fr       */
+/*   Created: 2023/02/10 02:27:52 by skasmi            #+#    #+#             */
+/*   Updated: 2023/02/10 03:58:48 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_assign_frgb(char **rgb, t_map *t)
 {
-	int		i1;
-	int		i2;
-	char	*ptr;
+	t->r_f = ft_atoi(rgb[0]);
+	t->g_f = ft_atoi(rgb[1]);
+	t->b_f = ft_atoi(rgb[2]);
+}
 
-	if (!s1 || !s2)
-		return (NULL);
-	i1 = ft_strlen(s1);
-	i2 = ft_strlen(s2);
-	ptr = (char *)malloc((i1 + i2) * sizeof(char) + 1);
-	if (!ptr)
-		return (NULL);
-	ft_memmove(ptr, s1, i1);
-	ft_memmove(ptr + i1, s2, i2 + 1);
-	ptr[i1 + i2] = 0;
-	return (ptr);
+void	ft_assign_crgb(char **rgb, t_map *t)
+{
+	t->r_c = ft_atoi(rgb[0]);
+	t->g_c = ft_atoi(rgb[1]);
+	t->b_c = ft_atoi(rgb[2]);
 }

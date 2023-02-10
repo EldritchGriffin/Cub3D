@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 21:15:04 by aelyakou          #+#    #+#             */
-/*   Updated: 2023/02/10 01:23:52 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/10 03:31:25 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	plyr_init(t_ply *ply, t_map *lvl)
 	ply->p_alt = UNIT / 2;
 	ply->pa = lvl->p_orient;
 	ply->p_pos = malloc(sizeof(t_pos));
+	if (!ply->p_pos)
+		return ;
 	ply->r_dir = 0;
 	ply->mv_dir = 0;
 	ply->mh_dir = 0;
@@ -71,6 +73,10 @@ void	img_init(t_data *data)
 	data->we = mlx_xpm_file_to_image(data->mlx->mp, data->lvl->t->we, &a, &a);
 	if (!data->so || !data->no || !data->ea || !data->we)
 		exit(1);
+	free(data->lvl->t->ea);
+	free(data->lvl->t->no);
+	free(data->lvl->t->so);
+	free(data->lvl->t->we);
 }
 
 t_data	*get_data(t_map *map)
