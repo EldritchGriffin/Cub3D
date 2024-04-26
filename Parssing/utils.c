@@ -34,9 +34,7 @@ void	ft_find_map(t_map *t, int i, char **av)
 void	ft_read_map(t_map *t, char **av)
 {
 	int	i;
-	int	j;
 
-	j = 0;
 	i = 0;
 	t->fd = open(av[1], O_RDWR);
 	if (t->fd < 0)

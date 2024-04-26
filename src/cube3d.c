@@ -16,7 +16,7 @@ int	update(t_data *data)
 {
 	p_move(data);
 	p_rotate(data);
-	mlx_clear_window(data->mlx->mp, data->mlx->w3);
+	// mlx_clear_window(data->mlx->mp, data->mlx->w3);
 	mlx_destroy_image(data->mlx->mp, data->wrld->img);
 	data->wrld->img = mlx_new_image(data->mlx->mp, data->mlx->w_w,
 			data->mlx->w_h);
@@ -110,8 +110,8 @@ int	main(int ac, char **av)
 			data->lvl->b_c);
 	data->lvl->fl_c = create_rgb(data->lvl->r_f, data->lvl->g_f,
 			data->lvl->b_f);
-	mlx_hook(data->mlx->w3, 2, 0, keydown, data);
-	mlx_hook(data->mlx->w3, 3, 0, keyup, data);
+	mlx_hook(data->mlx->w3, 2, 1, keydown, data);
+	mlx_hook(data->mlx->w3, 3, 2, keyup, data);
 	mlx_hook(data->mlx->w3, 17, 0, ft_quit, data);
 	mlx_loop_hook(data->mlx->mp, update, data);
 	mlx_loop(data->mlx->mp);

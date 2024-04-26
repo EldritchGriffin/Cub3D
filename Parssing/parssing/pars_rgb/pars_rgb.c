@@ -57,9 +57,7 @@ int	ft_check_2(char **str)
 int	ft_check_rgb_error_f(char *line, t_map *t)
 {
 	char	**rgb;
-	int		i;
 
-	i = 0;
 	if (ft_check_number_of_comma(line) == 2 && ft_check_line_rgb(line) == 0)
 	{
 		line = ft_strcpy(line, line);
@@ -85,9 +83,7 @@ int	ft_check_rgb_error_f(char *line, t_map *t)
 int	ft_check_rgb_error_c(char *line, t_map *map)
 {
 	char	**rgb;
-	int		i;
 
-	i = 0;
 	if (ft_check_number_of_comma(line) == 2 && ft_check_line_rgb(line) == 0)
 	{
 		line = ft_strcpy(line, line);

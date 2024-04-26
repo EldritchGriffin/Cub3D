@@ -92,11 +92,7 @@ int	check_empty_line(char *str)
 
 int	ft_export_only_map2d(t_map *t)
 {
-	char	*str;
-	int		i;
 
-	str = NULL;
-	i = 0;
 	if (check_empty_line(t->export_only_map) == 1)
 	{
 		printf("map error\n");

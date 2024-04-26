@@ -47,11 +47,11 @@ void	render_walls3d(t_data *data)
 
 int	keyup(int keycode, t_data *data)
 {
-	if (keycode == 123 || keycode == 124)
+	if (keycode == 65361 || keycode == 65363)
 		data->ply->r_dir = 0;
-	if (keycode == 13 || keycode == 1)
+	if (keycode == 119 || keycode == 115)
 		data->ply->mv_dir = 0;
-	if (keycode == 0 || keycode == 2)
+	if (keycode == 97 || keycode == 100)
 	{
 		data->ply->d_dir = 0;
 		data->ply->mh_dir = 0;
@@ -61,22 +61,22 @@ int	keyup(int keycode, t_data *data)
 
 void	get_m_dir(int keycode, t_data *data)
 {
-	if (keycode == 13)
+	if (keycode == 119)
 	{
 		data->ply->mv_dir = 1;
 		return ;
 	}
-	if (keycode == 1)
+	if (keycode == 115)
 	{
 		data->ply->mv_dir = -1;
 		return ;
 	}
-	if (keycode == 0)
+	if (keycode == 97)
 	{
 		data->ply->mh_dir = 1;
 		data->ply->d_dir = -1;
 	}
-	if (keycode == 2)
+	if (keycode == 100)
 	{
 		data->ply->mh_dir = 1;
 		data->ply->d_dir = 1;
@@ -85,12 +85,12 @@ void	get_m_dir(int keycode, t_data *data)
 
 void	get_r_dir(int keycode, t_data *data)
 {
-	if (keycode == 124)
+	if (keycode == 65363)
 	{
 		data->ply->r_dir = -1;
 		return ;
 	}
-	if (keycode == 123)
+	if (keycode == 65361)
 	{
 		data->ply->r_dir = 1;
 		return ;

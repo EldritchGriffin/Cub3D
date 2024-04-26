@@ -59,7 +59,7 @@ BOBJCTS=$(BSRCS:%.c=%.o)
 OBJCTS=$(SRCS:%.c=%.o)
 
 $(NAME) : $(OBJCTS) $(NAME2)
-		$(CC) $(CFLAGS) -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit $(OBJCTS) -o $(NAME) 
+	$(CC) $(CFLAGS) $(OBJCTS) -L. -lmlx -lX11 -lXext -lm  -o $(NAME)
 			
 	@echo "\033[31m░█████╗░\033[31m██╗░░░██╗\033[31m██████╗░  \033[32m██████╗░\033[32m██████╗░"
 	@echo "\033[31m██╔══██╗\033[31m██║░░░██║\033[31m██╔══██╗  \033[32m╚════██╗\033[32m██╔══██╗"

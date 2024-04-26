@@ -72,12 +72,8 @@ void	copy_texture(char *type, char *path, t_texture *t)
 void	ft_check_txt(char *path, char *type, t_texture *t)
 {
 	int		fd;
-	int		i;
-	int		len;
 	char	**str;
 
-	len = ft_strlen(path);
-	i = 0;
 	str = ft_split(path, ' ');
 	if (!str[1])
 		ft_perror();
